@@ -47,6 +47,7 @@ public class StartAppModel {
         for (Lift l : DataBase.getInstance().getLiftList()){
             if (l.getLiftName().equals(liftName)){
                 l.setMaintainence(false);
+                l.setCurrentPos(-1);
             }
         }
         startAppView.showAlert(liftName+"is changed to maintainence");

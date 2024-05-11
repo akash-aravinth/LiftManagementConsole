@@ -63,41 +63,41 @@ public class StartAppModel {
         List<Lift> liftList = new ArrayList<>();
         for (Lift l : DataBase.getInstance().getLiftList()) {
             if (l.isMaintainence()) {
-                System.out.println("--> "+ l.getLiftName());
+                System.out.println("--> " + l.getLiftName());
                 liftList.add(l);
             }
         }
-        Map<Integer,Lift> liftMap = new TreeMap<>();
-        for (Lift l : liftList){
-            if (liftMap.containsKey(Math.abs(l.getCurrentPos()-pickUpPoint))){
-                if (pickUpPoint - dropPoint < 0){
-                    if (l.getCurrentPos() <= pickUpPoint){
-                        liftMap.put(Math.abs(l.getCurrentPos()-pickUpPoint),l);
+        Map<Integer, Lift> liftMap = new TreeMap<>();
+        for (Lift l : liftList) {
+            if (liftMap.containsKey(Math.abs(l.getCurrentPos() - pickUpPoint))) {
+                if (pickUpPoint - dropPoint < 0) {
+                    if (l.getCurrentPos() <= pickUpPoint) {
+                        liftMap.put(Math.abs(l.getCurrentPos() - pickUpPoint), l);
                     }
-                }else{
-                    if (l.getCurrentPos() >= pickUpPoint){
-                        liftMap.put(Math.abs(l.getCurrentPos()-pickUpPoint),l);
+                } else {
+                    if (l.getCurrentPos() >= pickUpPoint) {
+                        liftMap.put(Math.abs(l.getCurrentPos() - pickUpPoint), l);
                     }
                 }
-            }else {
-                liftMap.put(Math.abs(l.getCurrentPos()-pickUpPoint),l);
+            } else {
+                liftMap.put(Math.abs(l.getCurrentPos() - pickUpPoint), l);
             }
         }
         Lift lift = null;
         int diff = Integer.MAX_VALUE;
-        for (Map.Entry<Integer,Lift> map : liftMap.entrySet()){
-            System.out.println("Map lift : "+map.getValue().getLiftName());
-            if (map.getKey() < diff){
+        for (Map.Entry<Integer, Lift> map : liftMap.entrySet()) {
+            System.out.println("Map lift : " + map.getValue().getLiftName());
+            if (map.getKey() < diff) {
                 lift = map.getValue();
                 diff = map.getKey();
             }
         }
-       if (lift != null){
-           System.out.println(lift.getLiftName()+" : is Assigned You");
-           lift.setCurrentPos(dropPoint);
-       }else {
-           System.out.println("All the lifts are in Maintenence Please Use Steps");
-       }
+        if (lift != null) {
+            System.out.println(lift.getLiftName() + " : is Assigned You");
+            lift.setCurrentPos(dropPoint);
+        } else {
+            System.out.println("All the lifts are in Maintenence Please Use Steps");
+        }
     }
 
 

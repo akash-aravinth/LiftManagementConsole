@@ -9,39 +9,40 @@ import java.util.Scanner;
 public class StartAppView {
     Scanner scanner = new Scanner(System.in);
     private StartAppModel startAppModel;
-    public StartAppView(){
+
+    public StartAppView() {
         startAppModel = new StartAppModel(this);
     }
 
-    public void init(){
+    public void init() {
         System.out.println("1 --> Take a Lift\n" +
                 "2 --> Print Lift Details\n" +
                 "3 --> Assign a Lift to Maintainence\n" +
                 "4 --> Exit");
         int choice = scanner.nextInt();
-        switch (choice){
-            case 1 : {
+        switch (choice) {
+            case 1: {
                 takeLift();
                 init();
                 break;
             }
-            case 2 : {
+            case 2: {
                 DataBase.getInstance().displayLift();
                 init();
                 break;
             }
-            case 3 : {
+            case 3: {
                 assignMaintanence();
                 init();
                 break;
             }
-            case 4 : {
-                System.out.println("Thank You for Using : "+ LiftManagement.getInstance().getAppName()+"\n" +
-                        "and the Version is : "+LiftManagement.getInstance().getAppVersion());
+            case 4: {
+                System.out.println("Thank You for Using : " + LiftManagement.getInstance().getAppName() + "\n" +
+                        "and the Version is : " + LiftManagement.getInstance().getAppVersion());
                 System.exit(0);
                 break;
             }
-            default:{
+            default: {
                 System.out.println("Please Enter a Valid Choice");
                 init();
                 break;
@@ -63,7 +64,7 @@ public class StartAppView {
         int dropPoint = scanner.nextInt();
         System.out.println("Enter No of People in Your Floor");
         int capacity = scanner.nextInt();
-        startAppModel.assignSameDirection(pickUpPoint,dropPoint,capacity);
+        startAppModel.assignSameDirection(pickUpPoint, dropPoint, capacity);
     }
 
     public void showAlert(String s) {

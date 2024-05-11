@@ -9,12 +9,14 @@ import java.util.Scanner;
 public class LiftManagement {
     Scanner scanner = new Scanner(System.in);
     private static LiftManagement liftManagement;
-    public static LiftManagement getInstance(){
-        if (liftManagement == null){
+
+    public static LiftManagement getInstance() {
+        if (liftManagement == null) {
             liftManagement = new LiftManagement();
         }
         return liftManagement;
     }
+
     private String appName = "Lift Management";
     private String appVersion = "1.0.0";
 
@@ -27,12 +29,13 @@ public class LiftManagement {
     }
 
     public void createLift() {
-       SetupLiftView setupLiftView = new SetupLiftView();
-       setupLiftView.init();
+        SetupLiftView setupLiftView = new SetupLiftView();
+        setupLiftView.init();
     }
-    public void init(){
-        System.out.println("Welcome To "+getAppName());
-        System.out.println("And the version is : "+getAppVersion());
+
+    public void init() {
+        System.out.println("Welcome To " + getAppName());
+        System.out.println("And the version is : " + getAppVersion());
         System.out.println("Enter No of Floors You Have : ");
         int floor = scanner.nextInt();
         DataBase.getInstance().setNoOfFloors(floor);
@@ -48,5 +51,5 @@ public class LiftManagement {
     public static void main(String[] args) {
         LiftManagement.getInstance().init();
     }
-    
+
 }

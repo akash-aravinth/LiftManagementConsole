@@ -8,7 +8,8 @@ import java.util.List;
 
 public class SetupLiftModel {
     private SetupLiftView setupLiftView;
-    public SetupLiftModel(SetupLiftView setupLiftView){
+
+    public SetupLiftModel(SetupLiftView setupLiftView) {
         this.setupLiftView = setupLiftView;
     }
 
@@ -20,7 +21,7 @@ public class SetupLiftModel {
         lift.setCurrentPos(currentPosition);
         String arr[] = onlyStop.split(",");
         List<Integer> li = new ArrayList<>();
-        for (String s : arr){
+        for (String s : arr) {
             li.add(Integer.parseInt(s));
         }
         lift.setOnlyAllow(li);

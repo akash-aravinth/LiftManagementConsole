@@ -63,7 +63,7 @@ public class StartAppView {
         int dropPoint = scanner.nextInt();
         System.out.println("Enter No of People in Your Floor");
         int capacity = scanner.nextInt();
-        startAppModel.assignLift(pickUpPoint,dropPoint,capacity);
+        startAppModel.assignSameDirection(pickUpPoint,dropPoint,capacity);
     }
 
     public void showAlert(String s) {
